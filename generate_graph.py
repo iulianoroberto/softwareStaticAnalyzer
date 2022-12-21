@@ -44,7 +44,7 @@ def metric_value_manipulate_for_class():
         print("Analizzo il file: " + file_name)
         for row in dataframe.iterrows():
             if list(row[1])[2] == "class":
-                key = list(row[1])[1]
+                key = list(row[1])[1].split('.')[-1]
                 cbo = list(row[1])[3]
                 fanin = list(row[1])[5]
                 fanout = list(row[1])[6]
@@ -52,8 +52,9 @@ def metric_value_manipulate_for_class():
                 dit = list(row[1])[8]
                 rfc = list(row[1])[10]
                 loc = list(row[1])[34]
+                rfc_limit = (wmc*dit) + 1
                 if key not in dic:
-                    dic[key] = [[cbo],[fanin],[fanout],[wmc],[dit],[rfc],[loc]]
+                    dic[key] = [[cbo],[fanin],[fanout],[wmc],[dit],[rfc],[loc],[rfc_limit]]
                 else:
                     dic.get(key)[0].append(cbo)
                     dic.get(key)[1].append(fanin)
@@ -62,6 +63,9 @@ def metric_value_manipulate_for_class():
                     dic.get(key)[4].append(dit)
                     dic.get(key)[5].append(rfc)
                     dic.get(key)[6].append(loc)
+                    dic.get(key)[7].append(rfc_limit)
+
+    print(dic)
     return dic
 
 
@@ -100,7 +104,7 @@ def plot_boxplot_graph(list, dic, title, limit_value):
         ax.axhline(y=limit_value, color='r', linestyle='-')
     plt.xticks(rotation=90)
     plt.tick_params(labelcolor='r', labelsize='medium', width=3)
-    fig.subplots_adjust(bottom=0.6)
+    fig.subplots_adjust(bottom=0.4)
     figManager = plt.get_current_fig_manager()
     figManager.resize(*figManager.window.maxsize())
     plt.grid()
@@ -199,12 +203,25 @@ def plotting():
     for key, value in metrics_variation.items():
         graph_title = "Metric (" + key + ") value variation for class"
 
+        dic2 = {}
         limit_value = 0
         if str(key) == "wmc":
+            for k, v in dic.items():
+                if max(dic.get(k)[3]) > WMC_LIMIT:
+                    dic2[k] = dic.get(k)[3]
             limit_value = WMC_LIMIT
         if str(key) == "cbo":
+            for k, v in dic.items():
+                if max(dic.get(k)[0]) > CBO_LIMIT:
+                    dic2[k] = dic.get(k)[0]
             limit_value = CBO_LIMIT
         if str(key) == "dit":
+            for k, v in dic.items():
+                if max(dic.get(k)[4]) > DIT_LIMIT:
+                    dic2[k] = dic.get(k)[4]
             limit_value = DIT_LIMIT
 
         plot_boxplot_graph(value, dic, graph_title, limit_value)
+
+        if limit_value != 0 and len(dic2) != 0:
+            plot_boxplot_graph(dic2.values(), dic2, graph_title, limit_value)
