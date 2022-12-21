@@ -1,10 +1,14 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import plotly.graph_objects as go
+from matplotlib.figure import Figure
+from matplotlib.backends import _backend_tk
+import matplotlib.transforms as transforms
 
-# Limit value: (WMC<=14, DIT<=7, NOC<=3, CBO<=2)
-
+WMC_LIMIT = 14
+DIT_LIMIT = 7
+NOC_LIMIT = 3
+CBO_LIMIT = 2
 GIT_COMMITS_FILE = 'elenco_csv.txt'
 ANALISYS_DIR = 'analysis'
 
@@ -54,10 +58,10 @@ def metric_value_manipulate_for_class():
                     dic.get(key)[0].append(cbo)
                     dic.get(key)[1].append(fanin)
                     dic.get(key)[2].append(fanout)
-                    dic.get(key)[2].append(wmc)
-                    dic.get(key)[2].append(dit)
-                    dic.get(key)[2].append(rfc)
-                    dic.get(key)[2].append(loc)
+                    dic.get(key)[3].append(wmc)
+                    dic.get(key)[4].append(dit)
+                    dic.get(key)[5].append(rfc)
+                    dic.get(key)[6].append(loc)
     return dic
 
 
@@ -67,6 +71,8 @@ def combine_plot_generic_bar_graph(x_data, y_data, ylabel, title, ax, x_position
     ax[x_position, y_position].bar(x_data, y_data)
     ax[x_position, y_position].set_ylabel(ylabel)
     ax[x_position, y_position].set_title(title)
+    ax[x_position, y_position].grid(True, linestyle='-.')
+    ax[x_position, y_position].tick_params(labelcolor='r', labelsize='medium', width=3)
     if limit_value != 0:
         ax[x_position, y_position].axhline(y=limit_value, color='r', linestyle='-')
     return ax
@@ -83,44 +89,22 @@ def combine_plot_generic_axes_pros_graph(x_data, y_data, ylabel, title, ax, x_po
     return ax
 
 # Plot generic box plot graph
-def plot_boxplot_graph(x_data, y_data):
-    colors = ['rgba(93, 164, 214, 0.5)', 'rgba(255, 144, 14, 0.5)', 'rgba(44, 160, 101, 0.5)',
-              'rgba(255, 65, 54, 0.5)', 'rgba(207, 114, 255, 0.5)', 'rgba(127, 96, 0, 0.5)']
-    fig = go.Figure()
-    for xd, yd, cls in zip(x_data, y_data, colors):
-        fig.add_trace(go.Box(
-            y=yd,
-            name=xd,
-            boxpoints='all',
-            jitter=0.5,
-            whiskerwidth=0.2,
-            fillcolor=cls,
-            marker_size=2,
-            line_width=1)
-        )
-    fig.update_layout(
-        title='Variation of metrics class by year',
-        yaxis=dict(
-            autorange=True,
-            showgrid=True,
-            zeroline=True,
-            dtick=5,
-            gridcolor='rgb(255, 255, 255)',
-            gridwidth=1,
-            zerolinecolor='rgb(255, 255, 255)',
-            zerolinewidth=2,
-        ),
-        margin=dict(
-            l=40,
-            r=30,
-            b=80,
-            t=100,
-        ),
-        paper_bgcolor='rgb(243, 243, 243)',
-        plot_bgcolor='rgb(243, 243, 243)',
-        showlegend=True
-    )
-    fig.show()
+def plot_boxplot_graph(list, dic, title, limit_value):
+    fig, ax = plt.subplots()
+    bplot1 = ax.boxplot(list,
+                         vert=True,  # vertical box alignment
+                         patch_artist=True,  # fill with color
+                         labels=dic.keys())  # will be used to label x-ticks
+    ax.set_title(title)
+    if limit_value != 0:
+        ax.axhline(y=limit_value, color='r', linestyle='-')
+    plt.xticks(rotation=90)
+    plt.tick_params(labelcolor='r', labelsize='medium', width=3)
+    fig.subplots_adjust(bottom=0.6)
+    figManager = plt.get_current_fig_manager()
+    figManager.resize(*figManager.window.maxsize())
+    plt.grid()
+    plt.show()
 
 
 # Plot anlasys's graph
@@ -191,6 +175,36 @@ def plotting():
     plt.show()
 
     dic = metric_value_manipulate_for_class()
-    for key, value in dic.items():
-        print(key)
-        print(value)
+
+    metrics_variation = {
+        "wmc": [],
+        "fanin": [],
+        "cbo": [],
+        "fanin": [],
+        "fanout": [],
+        "dit": [],
+        "rfc": [],
+        "loc": [],
+    }
+    
+    for value in dic.values():
+        metrics_variation["wmc"].append(value[3])
+        metrics_variation["fanin"].append(value[1])
+        metrics_variation["cbo"].append(value[0])
+        metrics_variation["fanout"].append(value[2])
+        metrics_variation["dit"].append(value[4])
+        metrics_variation["rfc"].append(value[5])
+        metrics_variation["loc"].append(value[6])
+    
+    for key, value in metrics_variation.items():
+        graph_title = "Metric (" + key + ") value variation for class"
+
+        limit_value = 0
+        if str(key) == "wmc":
+            limit_value = WMC_LIMIT
+        if str(key) == "cbo":
+            limit_value = CBO_LIMIT
+        if str(key) == "dit":
+            limit_value = DIT_LIMIT
+
+        plot_boxplot_graph(value, dic, graph_title, limit_value)
