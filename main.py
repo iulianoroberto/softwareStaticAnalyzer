@@ -4,6 +4,7 @@ from generate_graph import *
 
 csv_class_file = []
 
+
 selected_commits = filter_commits_by_year()
 #analize(selected_commits)
 plotting()
