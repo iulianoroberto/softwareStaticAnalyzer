@@ -1,12 +1,25 @@
 import os
+import logging
 
-LOG4J_PROJECT_DIR = './gmaven'
+PROJECT_DIR = './project_to_analize/log4j'
 GIT_COMMITS_FILE = 'commits.txt'
 
-# Choose commits for CK analysis
+'''
+    Choose commits for CK analysis
+'''
 def filter_commits_by_year():
-    all_commits = open(f'{LOG4J_PROJECT_DIR}/{GIT_COMMITS_FILE}', 'r+').readlines()
-    print('Commits reading: ok')
+    '''
+        Open commits.txt file that contain the commits log
+        of the project
+    '''
+    try:
+        all_commits = open(f'{PROJECT_DIR}/{GIT_COMMITS_FILE}', 'r+').readlines()
+    except:
+        logging.exception('Problem with open file')
+    '''
+        Select one commit for year
+        (the last commit pubblished for each year)
+    '''
     selected_commits = []
     i = 0
     for commit in all_commits:
@@ -24,5 +37,5 @@ def filter_commits_by_year():
     return selected_commits
 
 # Git log
-os.system(f"cd {LOG4J_PROJECT_DIR} && git log --pretty=format:'%ad,%H,%an' --date=iso | sort > {GIT_COMMITS_FILE}")
+os.system(f"cd {PROJECT_DIR} && git log --pretty=format:'%ad,%H,%an' --date=iso | sort > {GIT_COMMITS_FILE}")
 print('Log commits: ok')

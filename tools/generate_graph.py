@@ -10,7 +10,7 @@ DIT_LIMIT = 7
 NOC_LIMIT = 3
 CBO_LIMIT = 2
 GIT_COMMITS_FILE = 'elenco_csv.txt'
-ANALISYS_DIR = 'analysis'
+ANALISYS_DIR = 'result_analysis'
 
 def read_class_csv():
     class_csv_file_list = []
@@ -24,7 +24,7 @@ def metric_value_manipulate(class_csv_file_list):
     metric_sum_dict = {}
     for file_name in class_csv_file_list:
         metrics = pd.read_csv(f'{ANALISYS_DIR}/{file_name}')
-        year = file_name.split('_')[3][:4]
+        year = file_name.split('_')[2]
         total_loc = metrics['loc'].sum()
         average_wmc = metrics['wmc'].mean()
         average_cbo = metrics['cbo'].mean()
@@ -65,7 +65,6 @@ def metric_value_manipulate_for_class():
                     dic.get(key)[6].append(loc)
                     dic.get(key)[7].append(rfc_limit)
 
-    print(dic)
     return dic
 
 
