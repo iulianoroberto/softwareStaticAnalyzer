@@ -10,14 +10,14 @@ Note that is is strongly recommended to use Ubuntu 22.04 or other Lubuntu versio
 ## Prerequisites
 
 ###### Nicad
-[Nicad] (https://www.txl.ca/txl-nicaddownload.html) is a flexible TXL-based hybrid language-sensitive / text comparison software clone detection system developed by James R. Cordy and Chanchal K. Roy, originally based on Chanchal's PhD thesis work. NiCad6 is a significantly new implementation with many important improvements and optimizations.
+[Nicad](https://www.txl.ca/txl-nicaddownload.html) is a flexible TXL-based hybrid language-sensitive / text comparison software clone detection system developed by James R. Cordy and Chanchal K. Roy, originally based on Chanchal's PhD thesis work. NiCad6 is a significantly new implementation with many important improvements and optimizations.
 
 You need to install Nicad on main directory of the project. You Should creates a directory called "Nicad" on main directory of the project and put in its all files of Nicad installation.
 
 For installation of Nicad see the guide on  website.
 
 ###### CK
-[CK] (https://github.com/mauricioaniche/ck) calculates class-level and method-level code metrics in Java projects by means of static analysis (i.e. no need for compiled code). Currently, it contains a large set of metrics, including the famous CK. 
+[CK](https://github.com/mauricioaniche/ck) calculates class-level and method-level code metrics in Java projects by means of static analysis (i.e. no need for compiled code). Currently, it contains a large set of metrics, including the famous CK. 
 
 You need to install CK on main directory of the project. You Should creates a directory called "CK_tools" on main directory of the project and put in its all files of CK installation (including jar file).
 
