@@ -1,6 +1,8 @@
 # Software Metrics Analyzer
 Software Metrics Analyzer is a python base tool to evaluate the evolution of software quality in the years, on the base of metrics value, presence of clones and other factor of static analysis of source code. This tool takes advantage of the features provided by Nicad, Ck and Sonarqube.
 
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/architecture.jpg)
+
 ## Features
 The main features are:
 - Filter the list of commits made to the repository by selecting a commit for each year of publication (the last of the year). This is necessary to determine the viewpoints of the analysis.
@@ -50,3 +52,5 @@ Open the script by IDE, set the right paths in the code,  and launch "main.py" f
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen06.jpg)
 ###### Issues table
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen07.jpg)
+###### Clone detection
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/clone_detection.jpg)
