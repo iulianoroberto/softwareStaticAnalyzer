@@ -36,4 +36,7 @@ Insert in directory called "project_to_analize" the repository of software that 
 Open the script by IDE, set the right paths in the code,  and launch "main.py" file.
 
 # Preview
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen01.jpg)
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen04.jpg)
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen02.jpg)
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen03.jpg)
