@@ -36,10 +36,17 @@ Insert in directory called "project_to_analize" the repository of software that 
 Open the script by IDE, set the right paths in the code,  and launch "main.py" file.
 
 # Preview
+###### First set of metrics value variation for year
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen01.jpg)
+###### Second set of metrics value variation for year
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen04.jpg)
+###### WMC value variation for class
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen02.jpg)
+###### FIN value variation for class
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen03.jpg)
+###### Viewpoints
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen05.jpg)
+###### Commits pubblication for month
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen06.jpg)
+###### Issues table
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen07.jpg)
