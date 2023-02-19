@@ -4,7 +4,7 @@ Software Metrics Analyzer is a python base tool to evaluate the evolution of sof
 ## Features
 The main features are:
 - Filter the list of commits made to the repository by selecting a commit for each year of publication (the last of the year). This is necessary to determine the viewpoints of the analysis.
-- Calculate for each viewpoints:
+- Determine for each viewpoints:
   - Metrics value;
   - Number of clones;
   - Issue presence.
