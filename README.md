@@ -2,9 +2,15 @@
 Software Metrics Analyzer is a python base tool to evaluate the evolution of software quality in the years, on the base of metrics value, presence of clones and other factor of static analysis of source code. This tool takes advantage of the features provided by Nicad, Ck and Sonarqube.
 
 ## Features
+The main features are:
+- Filter the list of commits made to the repository by selecting a commit for each year of publication (the last of the year). This is necessary to determine the viewpoints of the analysis.
+- Calculate for each viewpoints:
+  - Metrics value;
+  - Number of clones;
+  - Issue presence.
+- Generate summary graphs of the data produced.
 
 # Install Guide
-
 Note that is is strongly recommended to use Ubuntu 22.04 or other Lubuntu version.
 
 ## Prerequisites
