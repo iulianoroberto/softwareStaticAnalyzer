@@ -36,3 +36,4 @@ Insert in directory called "project_to_analize" the repository of software that 
 Open the script by IDE, set the right paths in the code,  and launch "main.py" file.
 
 # Preview
+![alt text](http://url/to/img.png)
