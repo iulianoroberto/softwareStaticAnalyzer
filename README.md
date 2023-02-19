@@ -40,3 +40,6 @@ Open the script by IDE, set the right paths in the code,  and launch "main.py" f
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen04.jpg)
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen02.jpg)
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen03.jpg)
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen05.jpg)
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen06.jpg)
+![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/screen07.jpg)
