@@ -1,5 +1,5 @@
-# Software Metrics Analyzer
-Software Metrics Analyzer is a python base tool to evaluate the evolution of software quality in the years, on the base of metrics value, presence of clones and other factor of static analysis of source code. This tool takes advantage of the features provided by Nicad, Ck and Sonarqube.
+# Software Static Analyzer
+Software Static Analyzer is a python base tool to evaluate the evolution of software quality in the years, on the base of metrics value, presence of clones and other factor of static analysis of source code. This tool takes advantage of the features provided by Nicad, Ck and Sonarqube.
 
 ![alt text](https://github.com/robertoiuliano98/softwareMetricsAnalyzer/blob/main/preview/architecture.jpg)
 
