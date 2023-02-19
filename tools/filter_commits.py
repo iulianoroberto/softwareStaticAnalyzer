@@ -1,7 +1,7 @@
 import os
 import logging
 
-PROJECT_DIR = './project_to_analize/log4j'
+PROJECT_DIR = './project_to_analize/Java-WebSocket'
 GIT_COMMITS_FILE = 'commits.txt'
 
 '''

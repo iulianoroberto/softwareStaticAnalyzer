@@ -2,7 +2,7 @@ import os
 import logging
 
 CK_JAR_PATH = '/home/roberto/Desktop/ProgettoEQS/ck/target/ck-0.7.1-SNAPSHOT-jar-with-dependencies.jar'
-PROJECT_DIR = './project_to_analize/log4j'
+PROJECT_DIR = './project_to_analize/Java-WebSocket'
 csv_class_files = []
 
 '''
@@ -22,13 +22,14 @@ def checkout_and_analize(commit_hash, csv_class_files, elenco_csv, commit_year):
         os.system(f'mkdir result_analysis')
     except:
         logging.exception("Impossible create directory analysis")
-
-    os.system(f'java -jar {CK_JAR_PATH} {PROJECT_DIR} && mv class.csv class_{project_name}_{commit_year}_branch_{commit_hash}.csv && mv class_{project_name}_{commit_year}_branch_{commit_hash}.csv result_analysis')
+    os.system(f'java -jar {CK_JAR_PATH} {PROJECT_DIR} && \
+        mv class.csv class_{project_name}_{commit_year}_branch_{commit_hash}.csv && \
+             mv class_{project_name}_{commit_year}_branch_{commit_hash}.csv result_analysis')
     print('CK analysis for checkout ' + commit_hash + ' : ok')
     csv_class_files.append(f'class_{project_name}_{commit_year}_branch_{commit_hash}.csv')
     elenco_csv.write(f'class_{project_name}_{commit_year}_branch_{commit_hash}.csv' + ",")
     # Move HEAD to origin branch
-    os.system(f'cd {PROJECT_DIR} && git checkout gmaven-2.x')
+    os.system(f'cd {PROJECT_DIR} && git checkout master')
     # Remove analysis branch
     os.system(f'cd {PROJECT_DIR} && git branch -d analysis')
     print("*************************************************************")
